@@ -9,13 +9,15 @@
 	</head>
 	<body>
 
-		<div id="info">
-			navigate with WASD - arrows - mouse
-		</div>
+		
 
 
 		<div id="container" class="disableSelection"></div>
-		<div class="twenty" style="font-size:5em;color:white;background-color:black">hi. my name is Richard</div>
+		<ul class='GUIcontainer'>
+				<li class = 'moveGUI'></li>
+				<li class= 'instructions'>navigate with WASD - arrows - mouse</li>
+		</ul>
+		<div class="twenty" style="font-size:5em;color:white;background-color:rgba(0, 0, 0, 0.5);position:absolute;top:80%;width:100%;text-align:center">hi. my name is Richard</div>
 		<div class="hundred">Hello World</div>
 
 		<script src="build/three.js"></script>
@@ -122,15 +124,15 @@
 								sky.uniforms.sunPosition.value.copy( sunSphere.position );
 								renderer.render( scene, camera );
 							}
-							var gui = new dat.GUI();
-							gui.add( effectController, "turbidity", 1.0, 20.0, 0.1 ).onChange( guiChanged );
-							gui.add( effectController, "reileigh", 0.0, 4, 0.001 ).onChange( guiChanged );
-							gui.add( effectController, "mieCoefficient", 0.0, 0.1, 0.001 ).onChange( guiChanged );
-							gui.add( effectController, "mieDirectionalG", 0.0, 1, 0.001 ).onChange( guiChanged );
-							gui.add( effectController, "luminance", 0.0, 2 ).onChange( guiChanged );
-							gui.add( effectController, "inclination", 0, 1, 0.0001 ).onChange( guiChanged );
-							gui.add( effectController, "azimuth", 0, 1, 0.0001 ).onChange( guiChanged );
-							gui.add( effectController, "sun" ).onChange( guiChanged );
+							// var gui = new dat.GUI();
+							// gui.add( effectController, "turbidity", 1.0, 20.0, 0.1 ).onChange( guiChanged );
+							// gui.add( effectController, "reileigh", 0.0, 4, 0.001 ).onChange( guiChanged );
+							// gui.add( effectController, "mieCoefficient", 0.0, 0.1, 0.001 ).onChange( guiChanged );
+							// gui.add( effectController, "mieDirectionalG", 0.0, 1, 0.001 ).onChange( guiChanged );
+							// gui.add( effectController, "luminance", 0.0, 2 ).onChange( guiChanged );
+							// gui.add( effectController, "inclination", 0, 1, 0.0001 ).onChange( guiChanged );
+							// gui.add( effectController, "azimuth", 0, 1, 0.0001 ).onChange( guiChanged );
+							// gui.add( effectController, "sun" ).onChange( guiChanged );
 							guiChanged();
 						}
 
@@ -305,19 +307,30 @@
 
 				//
     			var SoundControls = function() {
-					   this.master = listener.getMasterVolume();
+					   this.volume = listener.getMasterVolume();
 					   this.ambient =  sound4.getVolume();
 
 				};
 
-				//controler volume///
-				// var gui = new dat.GUI();
-				// var soundControls = new SoundControls();
-				// var volumeFolder = gui.addFolder('sound volume');
-				//
-				// volumeFolder.add(soundControls, 'master').min(0.0).max(1.0).step(0.01).onChange(function() {
-				// 	listener.setMasterVolume(soundControls.master);
-				// });
+				///controler volume///
+
+
+				var gui = new dat.GUI( { autoPlace: false } );
+		    {
+
+					var soundControls = new SoundControls();
+
+					gui.add(soundControls, 'volume').min(0.0).max(1.0).step(0.01).onChange(function() {
+						listener.setMasterVolume(soundControls.volume);
+							});
+					gui.add(soundControls, 'ambient').min(0.0).max(1.0).step(0.01).onChange(function() {
+					sound4.setVolume(soundControls.ambient);
+				});
+							gui.close()
+
+		    }
+
+					var customContainer = $('.moveGUI').append($(gui.domElement));
 
 
 

@@ -17,17 +17,13 @@ body {
 a {
   color:#0078ff;
 }
-
-#info {
-  color:#fff;
-  position: absolute;
-  top: 0px; left: 0px; width: 25%;
-  padding: 5px;
-  z-index:100;
-  font-size: 8px;
+ul{
+  list-style: none;
 }
+
+
 #container{
-  height: 80vh;
+  height: 100vh;
 }
 .disableSelection{
 -webkit-touch-callout: none;
@@ -40,12 +36,28 @@ outline: 0;
 }
 .twenty{
   height:20vh;
-  background-color: red;
+  background-color: 0,0,0,.5;
 }
 .hundred{
   height:100vh;
   background-color: blue;
 }
+.GUIcontainer{
+    margin:0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .dg.main{
-  display: none;
+
+  font-size: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.instructions{
+  padding-top: 30px;
+  font-size: 8px;
+  display: block;
+  color: white;
 }
