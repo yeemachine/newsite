@@ -29,6 +29,7 @@
 
 
 		<script src="js/libs/dat.gui.min.js"></script>
+		<script type='text/javascript' src='js/libs/Tween.js'></script>
 
 
 		<script src="https://code.jquery.com/jquery-latest.js"></script>
@@ -82,16 +83,28 @@
 							sunSphere.visible = false;
 							scene.add( sunSphere );
 							/// GUI
+
+							var lum = 0.1;
+							var target = 2;
+							var tween = new TWEEN.Tween(lum).to(target, 2000);
+
+							tween.onUpdate(function(){
+								sky.uniforms.luminance.value = lum
+								});
+
 							var effectController  = {
 								turbidity: 10,
 								reileigh: 2,
 								mieCoefficient: 0.005,
 								mieDirectionalG: 0.8,
-								luminance: 1 + Math.sin(new Date().getTime() * .0025),
+								luminance: .8,
 								inclination: 0.49, // elevation / inclination
 								azimuth: 0.25, // Facing front,
 								sun: ! true
 							};
+
+
+
 							var distance = 400000;
 							function guiChanged() {
 								var uniforms = sky.uniforms;
@@ -344,7 +357,8 @@
 
 			function animate() {
 
-				requestAnimationFrame( animate );
+				sky.uniforms.luminance.value+=.0003
+				requestAnimationFrame( function(){animate();});
 				render();
 
 			}
