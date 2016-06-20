@@ -93,7 +93,7 @@
 
 				container = document.getElementById( 'container' );
 
-				camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 10000 );
+				camera = new THREE.PerspectiveCamera( 50, $(container).width() / $(container).height(), 1, 10000 );
 				camera.position.z = 500;
 
 				var listener = new THREE.AudioListener();
@@ -272,7 +272,7 @@
 
 				///
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
-				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setPixelRatio( $(container).devicePixelRatio );
 				renderer.setSize($(container).width(), $(container).height());
 
 				container.innerHTML = "";
@@ -288,16 +288,16 @@
 
 
 
-				window.addEventListener( 'resize', onWindowResize, false );
+				$(container).addEventListener( 'resize', onContainerResize, false );
 
 			}
 
-			function onWindowResize() {
+			function onContainerResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.aspect = $(container).width(), $(container).height();
 				camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.setSize( $(container).width(), $(container).height() );
 
 				controls.handleResize();
 
