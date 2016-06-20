@@ -16,3 +16,11 @@ font-family: "Michroma", sans-serif;
 user-select: none;
 outline: 0;
 }
+.twenty{
+  height:20vh;
+  background-color: red;
+}
+.hundred{
+  height:100px;
+  background-color: blue;
+}
