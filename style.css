@@ -46,3 +46,6 @@ outline: 0;
   height:100vh;
   background-color: blue;
 }
+.dg.main{
+  display:none;
+}
