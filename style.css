@@ -3,3 +3,6 @@
 *{
 font-family: "Michroma", sans-serif;
 }
+#container{
+  display:none;
+}
