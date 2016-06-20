@@ -5,7 +5,7 @@ font-family: "Michroma", sans-serif;
 
 }
 #container{
-  height: 50vh;
+  height: 80vh;
 }
 .disableSelection{
 -webkit-touch-callout: none;
