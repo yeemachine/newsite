@@ -11,12 +11,15 @@
 
 
 
-
+		<div class="start">
+			<div>Click to Begin</div>
+		</div>
 		<div id="container" class="disableSelection"></div>
 		<div class="blackbar"></div>
 		<ul class='GUIcontainer'>
+			<li class= 'instructions'>navigate with WASD - arrows - mouse</li>
 				<li class = 'moveGUI'></li>
-				<li class= 'instructions'>navigate with WASD - arrows - mouse</li>
+
 		</ul>
 		<div class="intro" ><p class="introP">my name <br>is <br>Richard</p></div>
 		<div class="hundred">Hello World</div>
@@ -331,9 +334,23 @@
 
 		    }
 
+					listener.setMasterVolume(0);
+
 					var customContainer = $('.moveGUI').append($(gui.domElement));
 
+					$( ".start" ).click(function() {
+					$( ".start" ).addClass( "hide" );
+					$( ".start" ).removeClass( "start" );
+					listener.setMasterVolume(1);
+					});
 
+					$( "#container" ).click(function() {
+						$( ".hide div" ).html( "Click to Resume" );
+					$( ".hide" ).addClass( "start" );
+					$( ".hide" ).removeClass( "hide" );
+						listener.setMasterVolume(0);
+
+					});
 
 				///
 				renderer = new THREE.WebGLRenderer( { antialias: true } );
@@ -350,7 +367,7 @@
 				controls.lookSpeed = response[0].lookspeed;
 				controls.noFly = false;
 				controls.lookVertical = true;
-				controls.lon=265;
+				controls.lon=270;
 
 				initSky();
 
