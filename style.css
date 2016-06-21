@@ -35,6 +35,7 @@ ul{
 
 #container{
   height: 100vh;
+  position: fixed;
 }
 .disableSelection{
 -webkit-touch-callout: none;
